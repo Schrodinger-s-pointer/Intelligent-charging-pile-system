@@ -1,2 +1,2 @@
-# Intelligent-charging-pile-system
-Intelligent charging pile management system
+# 智能充电桩管理系统
+基于国产化主控芯片的智能充电桩管理系统
