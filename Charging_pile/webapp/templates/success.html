@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改结果页面</title>
+
+    <style>
+
+        body {
+            background-image: url('../static/img/cdz.png');
+            background-size: 100%;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            animation: bganimation 15s infinite;
+
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 0px 12px;
+            border-radius: 0rem;
+        }
+
+        h3 {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+
+            padding: 0px 12px;
+            border-bottom: 2px dashed #aaaaaa;
+            border-radius: 0rem;
+        }
+
+        h4 {
+            text-align: left;
+            font-weight: bold;
+            margin: 10px 0;
+            border-bottom: 0px solid #3CB371;
+            padding: 0px 12px;
+            border-left: 5px solid #3CB371;
+            border-radius: 0rem;
+        }
+
+
+        .box h1 {
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .box .txtb {
+            border: 1px solid #aaa;
+            margin: 8px 0;
+            padding: 4px 18px;
+            border-radius: 10px;
+        }
+
+
+        h4, .box label {
+            text-align: left;
+            font-weight: bold;
+            margin: 10px 0;
+            border-bottom: 0px solid #3CB371;
+            padding: 0px 12px;
+            border-left: 5px solid #3CB371;
+            border-radius: 0rem;
+        }
+
+        .txtb input,
+        .txtb textarea {
+            width: 100%;
+            background: none;
+            border: none;
+            outline: none;
+            margin-top: 6px;
+            font-size: 18px;
+            color: #5e5e5e;
+        }
+
+        .sumbit input {
+            display: block;
+            background: none;
+            outline: none;
+            font-size: 18px;
+            color: #5e5e5e;
+            padding: 4px 0;
+            cursor: pointer;
+            margin-top: 1px;
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 10px;
+        }
+
+        .box {
+            display: block;
+            opacity: 0.9;
+            position: absolute;
+            border-radius: 20px;
+            top: 35%;
+            left: 50%;
+            width: 666px;
+            height: 600px;
+            margin-left: -333px;
+            margin-top: -200px;
+            z-index: 10001;
+            background-image: linear-gradient(125deg, #FFFFFF, #ECE9E6);
+
+            border: solid 1px #E4E5E6;
+            -moz-box-shadow: 2px 2px 5px #333333;
+            -webkit-box-shadow: 2px 2px 5px #333333;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <h2>充电桩配置修改结果</h2><br>
+
+        <h3>{{ ok }}</h3><br>
+        <h3>设备地址:{{ mac }} </h3><br>
+        <h3>设备串口:{{ uart }} </h3><br>
+        <h3>上报时间:{{ time }}秒 </h3><br>
+        <h3>设备定位:{{ gps }} </h3><br>
+        <h4>注：修改配置项完成，请重启设备以生效。 </h4><br>
+
+    </div>
+
+
+
+</body>
+</html>
