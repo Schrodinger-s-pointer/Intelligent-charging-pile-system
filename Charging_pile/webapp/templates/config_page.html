@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充电桩配置页面</title>
+    <script>
+function myFunction()
+{
+    alert("保存成功");
+
+}
+</script>
+
+    <style>
+        /*.mask {*/
+        /*    display: block;*/
+        /*    position: fixed;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    background: #19CAAD;*/
+        /*}*/
+        body {
+            /*background: rgb(238,174,202);*/
+            /*background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);*/
+            background-image: url('../static/img/cdz.png');
+            background-size: 100%;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            /*background-image: linear-gradient(125deg,#BDC3C7, #2C3E50);*/
+            /*background-size: 400%;*/
+            /*font-family: "montserrat";*/
+            animation: bganimation 15s infinite;
+
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            /*background-color: #f6f6f6;*/
+            margin: 10px 0;
+            border-bottom: 0px solid #FF1493;
+            padding: 0px 12px;
+            border-left: 5px solid #FF1493;
+            border-radius: 0rem;
+            /*margin: 12px 0px;*/
+            /*text-align: center;*/
+        }
+
+        h3 {
+            text-align: left;
+            font-weight: bold;
+            /*background-color: #f6f6f6;*/
+            margin: 10px 0;
+            border-bottom: 0px solid #4169E1;
+            padding: 0px 12px;
+            border-left: 5px solid #4169E1;
+            /*margin: 12px 0px;*/
+            border-radius: 0rem;
+            /*text-align: center;*/
+        }
+
+        h4 {
+            text-align: left;
+            font-weight: bold;
+            /*background-color: #f6f6f6;*/
+            margin: 10px 0;
+            border-bottom: 0px solid #3CB371;
+            padding: 0px 12px;
+            border-left: 5px solid #3CB371;
+            /*margin: 12px 0px;*/
+            border-radius: 0rem;
+            /*text-align: center;*/
+        }
+
+
+        .box h1 {
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .box .txtb {
+            border: 1px solid #aaa;
+            margin: 8px 0;
+            padding: 4px 18px;
+            border-radius: 10px;
+        }
+
+
+        h4, .box label {
+            text-align: left;
+            font-weight: bold;
+            /*background-color: #f6f6f6;*/
+            margin: 10px 0;
+            border-bottom: 0px solid #3CB371;
+            padding: 0px 12px;
+            border-left: 5px solid #3CB371;
+            /*margin: 12px 0px;*/
+            border-radius: 0rem;
+        }
+
+        .txtb input,
+        .txtb textarea {
+            width: 100%;
+            background: none;
+            border: none;
+            outline: none;
+            margin-top: 6px;
+            font-size: 18px;
+            /*text-align: center;*/
+            color: #5e5e5e;
+        }
+
+        .sumbit input {
+            display: block;
+            /* background-color: rgba(156, 39, 176, .5); */
+            /*width: 100%;*/
+            background: none;
+            /*border: none;*/
+            outline: none;
+            /*margin-top: 6px;*/
+            font-size: 18px;
+            /*text-align: center;*/
+            color: #5e5e5e;
+            padding: 4px 0;
+            /*color: #fff;*/
+            cursor: pointer;
+            margin-top: 1px;
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 10px;
+        }
+
+        .box {
+            display: block;
+            opacity: 0.9;
+            /*position: fixed;*/
+            /*_position: absolute;*/
+            position: absolute;
+            /*text-align: center;*/
+            border-radius: 20px;
+            top: 35%;
+            left: 50%;
+            width: 666px;
+            height: 600px;
+            margin-left: -333px;
+            margin-top: -200px;
+            z-index: 10001;
+            /*box-shadow: 2px 4px 6px #A0A0A0, -2px -2px 4px #A0A0A0;*/
+            background-image: linear-gradient(125deg, #FFFFFF, #ECE9E6);
+            /*background-color: #BEE7E9;*/
+
+            /*边框*/
+            border: solid 1px #E4E5E6;
+            /*边角弧度*/
+            /*border-radius: 10px;*/
+            /*阴影*/
+            -moz-box-shadow: 2px 2px 5px #333333;
+            -webkit-box-shadow: 2px 2px 5px #333333;
+            /*box-shadow: 7px 15px 30px #285a63;*/
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="mask">
+    <div class="box">
+        <h2> 当前充电桩本地配置信息</h2>
+
+        <h4> 设备地址：{{ cdz_mac }}</h4>
+        <h4> 设备串口：{{ cdz_uart }}</h4>
+        <h4> 上报时间：{{ cdz_time }}</h4>
+        <h4> 设备定位：{{ cdz_gps }}</h4>
+        <br>
+
+        <form method="post" action="/ok">
+
+            <label>设备地址:(十位十六进制数，且每两位用“:”(半角)符号分割，例如 CD:20:22:55:4F )</label>
+            <div class="txtb">
+                <input type="text" name="MAC" value={{ cdz_mac }} placeholder="请输入修改的设备地址">
+            </div>
+<!--            <br>-->
+
+            <label>设备连接Zigbee的串口:例如:/dev/ttyS3</label>
+            <div class="txtb">
+                <input type="text" name="UART" value={{ cdz_uart }} placeholder="请输入Zigbee透传串口">
+            </div>
+<!--            <br>-->
+
+            <label>请输入状态上报间隔时间（秒）：</label>
+            <div class="txtb">
+                <input type="text" name="TIME" value={{ cdz_time }} placeholder="请输入状态上报间隔时间">
+            </div>
+<!--            <br>-->
+
+             <label>设备定位:例如:经度&纬度（103.88859629631042&30.785644949183794）</label>
+            <div class="txtb">
+                <input type="text" name="GPS" value={{ cdz_gps }} placeholder="请输入设备定位">
+            </div>
+<!--            <br>-->
+
+            <h4> 修改完成后点击保存</h4>
+            <div class="sumbit">
+                <input onclick="myFunction()"  type="submit" value="保存" name="ok"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div style="background-image: url('../static/img/cool-background.png');">
+
+</div>
+</body>
+</html>
