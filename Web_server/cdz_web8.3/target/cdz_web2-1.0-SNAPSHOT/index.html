@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>智慧充电桩</title>
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=d6cOopMwG93wseDeebwKieBl9KDRgBTv"></script>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/WSNRTConnect.js"></script>
+	<script type="text/javascript" src="js/js.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="head clearfix">
+		<h1 class="pulll_left" id="ConnectState">智慧充电桩</h1>
+		<div class="menu menu2 pulll_left">
+			<ul>
+<!--				<li><a href="">扫码充电</a></li>-->
+<!--				<li><a href="">标题样式</a></li>-->
+			</ul>
+		</div>
+		<div class="time" id="showTime">2018/6/12 17:00:12</div>
+		<script>
+			var t = null;
+			t = setTimeout(time,1000);//開始运行
+			function time()
+			{
+			   clearTimeout(t);//清除定时器
+			   dt = new Date();
+				var y=dt.getFullYear();
+				var mt=dt.getMonth()+1;
+				var day=dt.getDate();
+			   var h=dt.getHours();//获取时
+			   var m=dt.getMinutes();//获取分
+			   var s=dt.getSeconds();//获取秒
+			   document.getElementById("showTime").innerHTML = y+"/"+mt+"/"+day+" "+h+":"+m+":"+s+"";
+			   t = setTimeout(time,1000); //设定定时器，循环运行
+			}
+
+		</script>
+	</div>
+	<div class="mainbox">
+		<ul class="clearfix nav1">
+			<li style="width: 30%">
+				<div class="box">
+					<div class="tit">电压1 :&nbsp&nbsp&nbsp<span id="voltage_v_1"></span></div>
+					<div class="boxnav" id="voltage_1" style="height: 200px;">
+						<table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0"></table>
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit">电流1 :&nbsp&nbsp&nbsp<span id="current_v_1"></span></div>
+					<div class="boxnav" id="current_1" style="height: 250px;">
+						<div class="" style="height: 190px" id="echart1"></div>
+					</div>
+				</div>
+			</li>
+			<li style="width: 40%">
+				<div class="box">
+					<div class="boxnav" id="map" style="height: 550px; position: relative">
+						<div class="container" id="container" style="width: 100%;height: 100%"></div>
+					</div>
+				</div>
+			</li>
+			<li style="width: 30%">
+				<div class="box">
+					<div class="tit">电压2 :&nbsp&nbsp&nbsp<span id="voltage_v_2"></span></div>
+					<div class="boxnav" id="voltage_2" style="height: 200px;">
+
+					</div>
+				</div>
+				<div class="box">
+					<div class="tit">电流2 :&nbsp&nbsp&nbsp<span id="current_v_2"></span></div>
+					<div class="boxnav" id="current_2" style="height: 250px;">
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="box" id="di">
+			<li style="width: 25%">
+				<div class="box">
+					<div class="tit">功率1 :&nbsp&nbsp&nbsp<span id="power_v_1"></span></div>
+					<div class="boxnav" id="power_1" style="height: 250px"></div>
+				</div>
+			</li>
+			<li style="width: 25%">
+				<div class="box">
+					<div class="tit">开关1
+						<span class="kg" id="kg1">
+							<img id="img1" src="images/kg_off.png" width="50" height="20">
+						</span>
+					</div>
+					<div class="boxnav" id="kg_1">
+						<img id="img2" src="images/off.png">
+					</div>
+				</div>
+			</li>
+			<li style="width: 25%">
+				<div class="box">
+					<div class="tit">开关2
+						<span class="kg" id="kg2">
+							<img id="img3" src="images/kg_off.png" width="50" height="20">
+						</span>
+					</div>
+					<div class="boxnav" id="kg_2">
+						<img id="img4" src="images/off.png" >
+					</div>
+
+				</div>
+			</li>
+			<li style="width: 25%">
+				<div class="box">
+					<div class="tit">功率2 :&nbsp&nbsp&nbsp<span id="power_v_2"></span></div>
+					<div class="boxnav" id="power_2" style="height: 250px"></div>
+				</div>
+			</li>
+
+		</div>
+	</div>
+<!--<script>-->
+<!--	// alert(window.location.href);-->
+<!--	function getUrlVars() {-->
+<!--		var vars = [], hash;-->
+<!--		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');-->
+<!--		for (var i = 0; i < hashes.length; i++) {-->
+<!--			hash = hashes[i].split('=');-->
+<!--			vars.push(hash[0]);-->
+<!--			vars[hash[0]] = hash[1];-->
+<!--		}-->
+<!--		return vars;-->
+<!--	}-->
+<!--	var id = getUrlVars()["id"];-->
+<!--	var key = getUrlVars()["key"];-->
+<!--	var MAC= getUrlVars()["MAC"];-->
+<!--	alert(id);-->
+<!--	alert(key);-->
+<!--	alert(MAC);-->
+<!--</script>-->
+<!--	<input type="hidden" value="${id}" id="id"/>-->
+<!--	<input type="hidden" value="${key}" id="key"/>-->
+<!--	<input type="hidden" value="${MAC}" id="MAC"/>-->
+</body>
+</html>
